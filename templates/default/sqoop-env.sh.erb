@@ -8,7 +8,8 @@
 export HADOOP_COMMON_HOME=<%= node['hops']['base_dir'] %>
 
 #Set path to where hadoop-*-core.jar is available
-export HADOOP_MAPRED_HOME=<%= node['hops']['base_dir'] %>/share/hadoop/mapreduce
+# For some unknown reason, this works as HADOOP_HOME, not ${HADOOP_HOME}/share/hadoop/mapreduce
+export HADOOP_MAPRED_HOME=<%= node['hops']['base_dir'] %>
 
 #Set the path to where bin/hive is available
 export HIVE_HOME=<%= node['hive2']['base_dir'] %>

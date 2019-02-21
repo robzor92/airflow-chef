@@ -115,15 +115,16 @@ template "#{node['sqoop']['base_dir']}/conf/sqoop-env.sh" do
   action :create
 end
 
-bash 'mysql-sqoop' do
-        user "root"
-        group node['sqoop']['group']
-        code <<-EOH
-          cp -f #{node['hive2']['base_dir']}/lib/mysql-connector*.jar #{node['sqoop']['base_dir']}/lib
-          chown -R #{node['sqoop']['user']} #{node['sqoop']['base_dir']}/lib/*.jar
-        EOH
-end
 
+
+remote_file "#{node['sqoop']['base_dir']}/lib/mysql-connector-java-#{node['hive2']['mysql_connector_version']}-bin.jar" do
+  source node['hive2']['mysql_connector_url']
+  checksum node['hive2']['mysql_connector_checksum']
+  owner node['sqoop']['user']
+  group node['sqoop']['group']
+  mode '0755'
+  action :create_if_missing
+end
 
 service_name="sqoop"
 

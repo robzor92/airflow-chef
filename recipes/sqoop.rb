@@ -36,13 +36,6 @@ group node['sqoop']['group'] do
   append true
 end
 
-group node['kzookeeper']['group'] do
-  action :modify
-  members ["#{node['sqoop']['user']}"]
-  append true
-end
-
-
 package_url = "#{node['sqoop']['url']}"
 base_package_filename = File.basename(package_url)
 cached_package_filename = "#{Chef::Config['file_cache_path']}/#{base_package_filename}"
@@ -98,7 +91,6 @@ bash 'create_sqoop_db' do
 end
 
 
-
 template "#{node['sqoop']['base_dir']}/conf/sqoop-site.xml" do
   source "sqoop-site.xml.erb"
   owner node['sqoop']['user']
@@ -114,8 +106,6 @@ template "#{node['sqoop']['base_dir']}/conf/sqoop-env.sh" do
   mode 0750
   action :create
 end
-
-
 
 remote_file "#{node['sqoop']['base_dir']}/lib/mysql-connector-java-#{node['hive2']['mysql_connector_version']}-bin.jar" do
   source node['hive2']['mysql_connector_url']

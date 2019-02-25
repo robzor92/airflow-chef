@@ -13,4 +13,4 @@ dependencies:
       - hops_airflow::default
   - recipe: hops_airflow::sqoop
     global:  
-      - kzookeeper::default
+      - kagent::default

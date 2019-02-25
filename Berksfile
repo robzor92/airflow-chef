@@ -27,4 +27,3 @@ cookbook 'conda', github: "logicalclocks/conda-chef", branch: "master"
 
 cookbook 'hive2', github: "logicalclocks/hive-chef", branch: "master"
 
-cookbook 'kzookeeper', github: "logicalclocks/kzookeeper", branch: "master"

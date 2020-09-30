@@ -86,7 +86,7 @@ bash "create_airflow_env" do
   environment ({'HOME' => "/home/#{node['conda']['user']}"})
   cwd "/home/#{node['conda']['user']}"
   code <<-EOF
-    #{node['conda']['base_dir']}/bin/conda create -q -y -n airflow python=3.6
+    #{node['conda']['base_dir']}/bin/conda create -q -y -n airflow python=#{node['airflow']['python_version']}
   EOF
   not_if "test -d #{node['conda']['base_dir']}/envs/airflow", :user => node['conda']['user']
 end

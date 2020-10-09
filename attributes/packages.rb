@@ -61,7 +61,11 @@ default['airflow']['dependencies'] =
     {
       default: [{ name: 'python-dev', version: '' },
                 { name: 'build-essential', version: '' },
-                { name: 'libssl-dev', version: '' }],
+                { name: 'libssl-dev', version: '' },
+                { name: 'autoconf', version: '' },
+                { name: 'automake', version: '' },
+                { name: 'pkg-config', version: '' },
+                { name: 'libtool', version: '' }],
       mysql: [{ name: 'mysql-client', version: '' },
               { name: 'libmysqlclient-dev', version: '' }],
       postgres: [{ name: 'postgresql-client', version: '' },
